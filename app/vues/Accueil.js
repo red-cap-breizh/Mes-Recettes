@@ -54,7 +54,7 @@ export default Accueil = ({ route, navigation }) => {
                 //chargeDesRecettes();
             }
         } catch(e) {
-          // traitement des erreurs
+           // traitement des erreurs
             console.log("erreur fct 'getRcettes': ", e);
         }
     };
