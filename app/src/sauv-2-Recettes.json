@@ -1,0 +1,21 @@
+{
+    "recettes":[
+        {
+            "id": "8953201245",
+            "categorie":"dessert",
+            "name": "Tarte citron meringué",
+            "picture": "https://beghin-say.fr/sites/default/files/styles/square/public/tarte_citron_meringuee_visuel_500x500.jpg?itok=PY8PKRZK",
+            "ingredients": "oeuf\ncitron\nsucre\nfarine",
+            "preparation": "Étape 1\nOn commence par la pâte sablée : mettre le four à préchauffer à 180°C (thermostat 6). On sépare les blancs des jaunes d'oeufs.\nÉtape 2\nFouetter les jaunes d'oeuf avec le sucre et 2 cuillères d'eau pour faire mousser.\nÉtape 3\nMélanger au doigt la farine et le beurre coupé en petits cubes\nÉtape 4\npour obtenir une consistance sableuse et afin que tout le beurre soit absorbé (il faut faire vite pour que le mélange ne ramollisse pas trop)."
+            
+        },
+        {
+            "id": "2589898987",
+            "categorie":"Plat",
+            "name": "Burger Tonton",
+            "picture": "https://cac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcac.2F2018.2F09.2F25.2Fc7847cc3-6028-4609-ab50-065c275277fa.2Ejpeg/750x562/quality/80/crop-from/center/cr/wqkgQXViZXJnaW5lIHN0dWRpby9TdWNyw6kgc2Fsw6kgLyBDdWlzaW5lIEFjdHVlbGxl/burger-maison.jpeg",
+            "ingredients": "2 pains pour hamburger\n2 steaks hachés\n4 tranches mozzarella\n4 tomates confites à l’huile\nroquette",
+            "preparation": "Étape 1\nPréchauffer le four à 180°C (thermostat 6).\nÉtape 2\nCouper les olives en rondelles et le jambon en morceaux.\nÉtape 3\nVerser les oeufs dans la farine et mélanger.\nÉtape 4\nAjouter le lait et l'huile puis mélanger.\nÉtape 5\nAjouter le jambon, les olives et le gruyère puis mélanger."
+        }
+    ]
+}

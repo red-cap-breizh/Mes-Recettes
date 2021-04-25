@@ -1,0 +1,12 @@
+{
+    "structureRecette":[
+        {
+            "id": "id",
+            "categorie":"categorie",
+            "name": "nom recette",
+            "picture": "url image",
+            "ingredients": "ingredients",
+            "preparation": "preparation"
+        }        
+    ]
+}
