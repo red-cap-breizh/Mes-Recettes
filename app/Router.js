@@ -2,20 +2,21 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+// import des composants internes
 import Accueil from './vues/Accueil';
 import Detail from './vues/Detail';
 import Test from './vues/Test';
 
-const darkBlue = "#003C62";
-const lightBlue = "#F0FAFF";
-const lightGrey = "#EDEDED";
+//import des couleurs et radius du projet
+import localStyles from './styles/localStyles';
+
 
 const mesStyles = {
     headerStyle:{
-        backgroundColor: lightBlue,
+        backgroundColor: localStyles.lightBlue,
     },
     headerTitleStyle:{
-        color: darkBlue,
+        color: localStyles.darkBlue,
         fontWeight:'bold',
         fontSize: 28,
     },
@@ -34,10 +35,10 @@ export default Router = () => {
                     options={({ route }) => ({
                         title: "Recettes",
                         headerStyle:{
-                            backgroundColor: lightBlue,
+                            backgroundColor: localStyles.lightBlue,
                         },
                         headerTitleStyle:{
-                            color: darkBlue,
+                            color: localStyles.darkBlue,
                             fontWeight:'bold',
                             fontSize: 28,
                         },
@@ -51,10 +52,10 @@ export default Router = () => {
                     options={({ route }) => ({
                         title: route.params.uneRecette.categorie,
                         headerStyle:{
-                            backgroundColor: lightBlue,
+                            backgroundColor: localStyles.lightBlue,
                         },
                         headerTitleStyle:{
-                            color: darkBlue,
+                            color: localStyles.darkBlue,
                             fontWeight:'bold',
                             fontSize: 28,
                         },
@@ -62,13 +63,6 @@ export default Router = () => {
                     })}
                 />
                 <Stack.Screen name="Test" component={Test} />
-                {/* <Stack.Screen
-                    name="Test"
-                    component={Test}
-                    //options={({ route }) => ({ title: 'le titre de test' })}
-                    options={() => ({ title: 'le titre de test' })}
-                /> */}
-                {/* route.params.uneRecette.name */}
             </Stack.Navigator>
         </NavigationContainer>
     );

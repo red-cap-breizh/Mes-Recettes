@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput } from "react-native";
+//import des couleurs et radius du projet
+import localStyles from '../styles/localStyles';
 
 const darkBlue = "#003C62";
 const lightBlue = "#F0FAFF";

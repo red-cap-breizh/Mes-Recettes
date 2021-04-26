@@ -6,10 +6,9 @@ import * as structureRecette from '../src/structRecet.json';//fichier json local
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const darkBlue = "#003C62";
-const lightBlue = "#F0FAFF";
-const lightGrey = "#EDEDED";
-const radius = 10;
+//import des couleurs et radius du projet
+import localStyles from '../styles/localStyles';
+
 
 export const EditRecette = (parse) => {
     //const [modalVisible, setModalVisible] = useState(false);
@@ -19,8 +18,6 @@ export const EditRecette = (parse) => {
     const [categorie,setCategorie] = useState("");
     const [ingredients,setIngredients] = useState("");
     const [description,setDescription] = useState("");
-
-    //console.log("modale: " , parse.visible);
 
     useEffect(() => {
         chargeStructureRecette();
@@ -60,7 +57,6 @@ export const EditRecette = (parse) => {
                 recetteTemp.ingredients = ingredients;
                 recetteTemp.preparation = description;
                 setRecetteEdit(recetteTemp);
-                console.log("trace", parse.desRecettes);
                 let desRecettesTemp = [];
                 //test de 'desRecettes' car peut être null (on ne peut pas copier un objet null)
                 if (parse.desRecettes) {
@@ -153,11 +149,11 @@ export const EditRecette = (parse) => {
 
 const styles = StyleSheet.create({
     body: {
-        backgroundColor: lightBlue,
+        backgroundColor: localStyles.lightBlue,
         height: '100%',
     },
     nav:{
-        backgroundColor: lightBlue,
+        backgroundColor: localStyles.lightBlue,
         flexDirection: 'row',
         justifyContent: "space-between",
         marginVertical: 10,
@@ -166,7 +162,7 @@ const styles = StyleSheet.create({
         width: '80%',
         textAlign: 'center',
         textAlignVertical: 'center',
-        color: darkBlue,
+        color: localStyles.darkBlue,
         fontSize: 28,
         fontWeight: 'bold',
     },
@@ -183,12 +179,12 @@ const styles = StyleSheet.create({
     validButton:{
         width: 100,
         height: 40,
-        borderRadius: radius,
-        backgroundColor: darkBlue,
+        borderRadius: localStyles.radius_s,
+        backgroundColor: localStyles.darkBlue,
     },
     validText: {
         marginTop:5,
-        color: lightGrey,
+        color: localStyles.lightGrey,
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',

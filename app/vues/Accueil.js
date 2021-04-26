@@ -1,25 +1,26 @@
 
 import React from 'react';
-import { View, StyleSheet, FlatList, TouchableHighlight } from "react-native";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View,Text,Button, StyleSheet, FlatList, TouchableHighlight } from "react-native";
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import { useState, useEffect } from 'react';
+
+//import des couleurs et radius du projet
+import localStyles from '../styles/localStyles';
 
 //fichier json local de recettes
 import * as dataRecettes from '../src/recettesFr.json';
 
+//import composants internes
 import { BlocRecette } from '../composants/BlocRecette';
 import { EditRecette } from '../vues/EditRecette'
 
-const darkBlue = "#003C62";
-const lightBlue = "#F0FAFF";
-const lightGrey = "#EDEDED";
 
 export default Accueil = ({ route, navigation }) => {
     //const [uneRecette, setUneRecette] = useState([]);
     const [desRecettes, setDesRecettes] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
+    //const [presenceRecettes, setPresenceRecettes] = useState(false);
 
     // on charge des recettes provenant du fichier json local pour test
     useEffect(() => {
@@ -43,16 +44,6 @@ export default Accueil = ({ route, navigation }) => {
             const jsonValue = await AsyncStorage.getItem("@mesRecettes");
             let retour = (jsonValue != null ? JSON.parse(jsonValue) : null);
             setDesRecettes(retour);
-            //on teste s'il y a des recettes sauvegardées à charger
-            if(retour[0]){
-                console.log("On charge les recettes sauvegardées");
-            }
-            //s'il n'y a pas de recettes sauvegardées, on charge des recettes de démo
-            else{
-                console.log("On charge les recettes de démo");
-                setDesRecettes(dataRecettes.recettes);
-                //chargeDesRecettes();
-            }
         } catch(e) {
            // traitement des erreurs
             console.log("erreur fct 'getRcettes': ", e);
@@ -68,11 +59,6 @@ export default Accueil = ({ route, navigation }) => {
         //On efface le parametre après utilisation car il est toujours présent à chaque retour dans accueil
         route.params = "";
     }
-
-    // petite fonction de test
-    const fctTest = () => {
-        console.log("click btn test");
-    };
 
     //fonction pour passer l'objet navigation, et le 'hooks recettes' dans les éléments de la flatlist
     const appelBlocRecette = ({ item }) => {
@@ -95,42 +81,102 @@ export default Accueil = ({ route, navigation }) => {
                                     onPress={() => {
                                         setModalVisible(true);}
                                     }>
-                                    <Icon name="edit" size={35} color="#000" />
+                                    <Icon name="plus-square" size={35} color="#000" />
                                 </TouchableHighlight>,
         });
     }, [navigation]);
+    
+    
+    //teste de présence de recettes pour gérer deux affichages différents
+    if(desRecettes[0]){
+        return (
+            <View style={styles.container}>
+    
+                {/* affichage de la liste des recettes */}
+                <FlatList
+                    data={desRecettes}
+                    renderItem={appelBlocRecette}
+                    keyExtractor={item => item.id}
+                />
+    
+                {/* Fenetre modale : elle s'affiche avec la variable bool 'visible' */}
+                <EditRecette
+                    visible={modalVisible}
+                    setVisible={setModalVisible}
+                    desRecettes={desRecettes} 
+                    setDesRecettes={setDesRecettes}
+                    saveRecettes={saveRecettes}
+                >
+                </EditRecette>
+            </View>
+        );
+    }
+    else{
+        return (
+            <View style={styles.container}>
+                <View style={styles.blocText_1}>
+                    <Text style={styles.text}>Cliquez sur “+” en haut à droite,
+                    </Text>
+                    <Text style={styles.text}>pour ajouter une
+                            première recette.
+                    </Text>
+                </View>
+                <View style={styles.blocText_2}>
+                    <Text style={styles.text}>Ou cliquez sur le bouton en dessous,
+                    </Text>
+                    <Text style={styles.text}>pour charger des recettes de demo.
+                    </Text>
+                </View>
+                <View style={styles.button}>
+                    <Button
+                        title="charger les recettes de demo"
+                        color={localStyles.darkBlue}
+                        onPress={() => {
+                            setDesRecettes(dataRecettes.recettes);
+                        }}
+                    />
+                </View>
 
-    return (
-        <View style={styles.container}>
-
-            {/* affichage de la liste des recettes */}
-            <FlatList
-                data={desRecettes}
-                renderItem={appelBlocRecette}
-                keyExtractor={item => item.id}
-            />
-
-            {/* Fenetre modale : elle s'affiche avec la variable bool 'visible' */}
-            <EditRecette
-                visible={modalVisible}
-                setVisible={setModalVisible}
-                desRecettes={desRecettes} 
-                setDesRecettes={setDesRecettes}
-                saveRecettes={saveRecettes}
-            >
-            </EditRecette>
-        </View>
-    );
+    
+                {/* Fenetre modale : elle s'affiche avec la variable bool 'visible' */}
+                <EditRecette
+                    visible={modalVisible}
+                    setVisible={setModalVisible}
+                    desRecettes={desRecettes} 
+                    setDesRecettes={setDesRecettes}
+                    saveRecettes={saveRecettes}
+                >
+                </EditRecette>
+            </View>
+        );
+    };
+    
 
 };
 
 
 const styles = StyleSheet.create({
+    blocText_1:{
+        marginTop: 150,
+    },
+    blocText_2:{
+        marginTop: 100,
+        marginBottom: 20,
+    },
+    text:{
+        color: localStyles.darkBlue,
+        fontSize: 18,
+        textAlign: 'center',
+    },
+    button:{
+        margin:20,
+    },
     container: {
-        backgroundColor: lightBlue,
+        backgroundColor: localStyles.lightBlue,
+        height: '100%',
     },
     touchable:{
-        borderRadius: 10,
+        borderRadius: localStyles.radius_s,
         margin: 10,
     },
 });

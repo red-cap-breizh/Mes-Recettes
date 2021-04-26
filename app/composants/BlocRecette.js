@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableHighlight } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
+//import des couleurs et radius du projet
+import localStyles from '../styles/localStyles';
 
 const darkBlue = "#003C62";
 const lightBlue = "#F0FAFF";

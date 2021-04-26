@@ -1,16 +1,17 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableHighlight, Alert, SafeAreaView, ScrollView } from "react-native";
 import { color } from 'react-native-reanimated';
-import Icon from 'react-native-vector-icons/FontAwesome';
+//import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+//import des couleurs et radius du projet
+import localStyles from '../styles/localStyles';
 
-const darkBlue = "#003C62";
-const lightBlue = "#F0FAFF";
-const lightGrey = "#EDEDED";
-const radius = 20;
+
 
 
 
 export default Detail = ({route,navigation,desRecettes,setDesRecettes}) => {
+    //configuration de la barre de navigation
     React.useLayoutEffect(() => {
     navigation.setOptions({
         headerRight: () => <TouchableHighlight
@@ -20,7 +21,7 @@ export default Detail = ({route,navigation,desRecettes,setDesRecettes}) => {
                             onPress={() => {
                                 suppRecette();}
                             }>
-                            <Icon name="trash" size={35} color="#000" />
+                            <Icon name="trash-alt" size={35} color="#000" />
                             </TouchableHighlight>,
     });
     }, [navigation]);
@@ -38,7 +39,6 @@ export default Detail = ({route,navigation,desRecettes,setDesRecettes}) => {
             [
                 {
                     text: "Annuler",
-                    //onPress: () => console.log("Cancel Pressed"),
                     style: "cancel"
                 },
                 //retour accueil avec envoie de l'id de la recette à supprimer
@@ -81,21 +81,11 @@ export default Detail = ({route,navigation,desRecettes,setDesRecettes}) => {
 };
 
 const styles = StyleSheet.create({
-    // container: {
-    //     //paddingTop: 50,
-    //     //marginVertical: 10,
-    //     margin:5,
-    //     //paddingTop: 10,
-    //     flexDirection: "row",
-    //     backgroundColor: darkBlue,
-    //     borderRadius: radius,
-    // },
     touchable:{
         borderRadius: 10,
         margin: 10,
     },
     header:{
-        //backgroundColor: "yellow",
         height: 300,
     },
     body:{
@@ -104,23 +94,21 @@ const styles = StyleSheet.create({
     titreSection:{
         flexDirection: 'row',
         marginVertical: 15,
-        //margin: 10,
-        //marginLeft: -2,
     },
     textSection:{
         textAlignVertical: 'bottom',
-        color: darkBlue,
+        color: localStyles.darkBlue,
         fontSize: 20,
         marginLeft: 20,
         fontWeight: 'bold',
     },
     textIngredients: {
-        color: darkBlue,
+        color: localStyles.darkBlue,
         fontSize: 18,
         fontWeight: 'bold',
     },
     textPreparation: {
-        color: darkBlue,
+        color: localStyles.darkBlue,
         fontSize: 12,
         fontWeight: 'bold',
         marginBottom:30,
@@ -134,42 +122,19 @@ const styles = StyleSheet.create({
         height: 250,
     },
     nomRecette: {
-        backgroundColor: darkBlue,
-        borderTopRightRadius: radius,
-        borderBottomRightRadius : radius,
+        backgroundColor: localStyles.darkBlue,
+        borderTopRightRadius: localStyles.radius_m,
+        borderBottomRightRadius : localStyles.radius_m,
         width: '80%',
         height: 70,
-        color: lightGrey,
+        color: localStyles.lightGrey,
         textAlign: 'center',
         textAlignVertical: 'center',
         fontSize: 25,
-        //zIndex: 5000,
-    },
-    // blocText: {
-    //     //alignItems:"stretch",
-    //     //backgroundColor: lightGrey,
-    //     width: "65%",
-    //     height: "auto",
-    // },
-
-    // categorie: {
-    //     fontSize: 10,
-    //     width: "30%",
-    //     textAlign: "center",
-    //     backgroundColor: lightGrey,
-    // },
-    
-    viewIcon: {
-        //marginRight: 5,
-        //flexDirection: 'column',
-        //alignContent: 'flex-end',
-        //backgroundColor: lightGrey,
-        //alignItems: 'center'
     },
     icon: {
         marginRight: 5,
         marginTop: 'auto',
         marginBottom: 'auto',
-        //marginVertical: 'auto',
     }
 });
